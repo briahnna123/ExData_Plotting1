@@ -27,10 +27,11 @@ power_data$Date <- as.Date(power_data$Date, format="%d/%m/%Y")
 data<- power_data[power_data$Date >= as.Date("2007-02-01") & power_data$Date<=as.Date("2007-02-02"),]
 
 
-# Step 4: Make Columns numeric
+# Step 4: Make Columns Class numeric
 data$Global_active_power<- as.numeric(as.character(data$Global_active_power))
 
 # Step 5: Make Histogram
+# Desginate what type of file
 png(filename= "plot1.png", width=480, height=480, units="px")
 hist(data$Global_active_power, col = "red", main = paste("Global Active Power"), xlab = "Global Active Power (kilowatts)")
 dev.off() # Show the graph in the WD

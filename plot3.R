@@ -29,9 +29,11 @@ data$Sub_metering_2 <- as.numeric(as.character(data$Sub_metering_2))
 data$Sub_metering_3 <- as.numeric(as.character(data$Sub_metering_3))
 
 # Step 5: Make Plot
+# Specify type
 png(filename= "plot3.png", width=480, height=480, units="px")
 plot(data$timestamp,data$Sub_metering_1, type="l", xlab="", ylab="Energy sub metering")
 lines(data$timestamp,data$Sub_metering_2,col="red")
 lines(data$timestamp,data$Sub_metering_3,col="blue")
 legend("topright", col=c("black","red","blue"), c("Sub_metering_1  ","Sub_metering_2  ", "Sub_metering_3  "),lty=c(1,1), lwd=c(1,1))
 dev.off() # Show graph in WD
+

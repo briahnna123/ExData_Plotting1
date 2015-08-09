@@ -24,8 +24,34 @@ data <- transform(data, timestamp=as.POSIXct(paste(Date, Time)), "%d/%m/%Y %H:%M
 
 # Step 4: Make Columns Classes numeric
 data$Global_active_power<- as.numeric(as.character(data$Global_active_power))
+data$Global_reactive_power<- as.numeric(as.character(data$Global_reactive_power))
+data$Voltage<- as.numeric(as.character(data$Voltage))
+data$Sub_metering_1 <- as.numeric(as.character(data$Sub_metering_1))
+data$Sub_metering_2 <- as.numeric(as.character(data$Sub_metering_2))
+data$Sub_metering_3 <- as.numeric(as.character(data$Sub_metering_3))
 
-# Step 5: Make Histogram
-png(filename= "plot2.png", width=480, height=480, units="px")
+# Step 5: Make Plot
+# Specifiy what type of file
+png(filename= "plot4.png", width=480, height=480, units="px")
+par(mfrow=c(2,2)) # Set graphic parameters we want 2 graphs then 2 other graphs
+
+# First Graph
 plot(data$timestamp, data$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
+
+# Second Graph
+plot(data$timestamp, data$Voltage, type="l", xlab="datetime", ylab="Voltage")
+
+# Third Graph
+plot(data$timestamp,data$Sub_metering_1, type="l", xlab="", ylab="Energy sub metering")
+lines(data$timestamp,data$Sub_metering_2,col="red")
+lines(data$timestamp,data$Sub_metering_3,col="blue")
+legend("topright", col=c("black","red","blue"), c("Sub_metering_1  ","Sub_metering_2  ", "Sub_metering_3  "),lty=c(1,1), lwd=c(1,1))
+
+# Fourth Graph 
+plot(data$timestamp, data$Global_reactive_power, type="l", xlab="datetime", ylab="Global_reactive_power")
+
+# Together
 dev.off() # Show graph in WD
+
+
+
