@@ -8,7 +8,7 @@
 # Step 1: Bring in the data to manipulate
 setwd("~/Desktop") # Set WD
 files <- file("household_power_consumption.txt") # Bring in file
-power_data <- read.table(files, header=T, sep=";") # Read data into table
+power_data <- read.table(files, header=TRUE, sep=";") # Read data into table
 
 
 # Step 2: We need to "clean" the data; making tidy data
