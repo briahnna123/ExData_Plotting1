@@ -25,7 +25,7 @@ data <- transform(data, timestamp=as.POSIXct(paste(Date, Time)), "%d/%m/%Y %H:%M
 # Step 4: Make Columns numeric
 data$Global_active_power<- as.numeric(as.character(data$Global_active_power))
 
-# Step 5: Make Histogram
+# Step 5: Make Plot
 png(filename= "plot2.png", width=480, height=480, units="px")
 plot(data$timestamp, data$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
 dev.off() # Show graph in WD
